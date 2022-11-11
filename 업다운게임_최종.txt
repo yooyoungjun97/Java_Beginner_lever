@@ -1,0 +1,68 @@
+package com.java.quiz;
+
+import java.util.Scanner;
+
+public class test {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+
+		int num;
+		int MinNum = 1;
+		int MinNumTmp=1;
+		int MaxNum = 100;
+		int MaxNumTmp=0;
+		int correct;
+		char onemore = ' ';
+
+		
+
+		while (true) {
+			
+			System.out.printf("컴퓨터는 숫자를 결정했습니다.");
+			System.out.println(MinNum + "~" + MaxNum + "사이의 숫자를 말씀하세요");
+			correct = (int) (Math.random() * 100 + 1);
+			num = sc.nextInt();
+
+			if (correct > MinNum && num > MinNum && correct<MaxNum && correct > num) {
+				
+				MinNumTmp = MinNum;
+				MinNum = num;
+				
+				
+
+				System.out.printf("업! ");
+				continue;
+
+			}
+
+			else if (correct > MinNum && num > correct && MaxNum > num) {
+				MaxNumTmp=MaxNum;
+				MaxNum = num;
+				System.out.printf("다운! ");
+				continue;
+
+			} else {
+				System.out.println("정답입니다.");
+				
+				MinNum=MinNumTmp;
+				MaxNum=MaxNumTmp;
+
+			}
+
+			System.out.print("게임을 계속하시겠습니까? (y/n) : ");
+			onemore = sc.next().charAt(0);
+			if (onemore == 'y') {
+				continue;
+			} else if (onemore == 'n') {
+				System.out.println("게임이 종료되었습니다.");
+				System.exit(0);
+			} else {
+				System.out.println("잘못입력했습니다.종료합니다.");
+				break;
+			}
+
+		}
+	}
+
+}
